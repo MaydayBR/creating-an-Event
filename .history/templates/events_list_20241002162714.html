@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Events at Venue</title>
+</head>
+<body>
+    <h1>Events at Venue</h1>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.name.text }}</strong><br>
+                Start: {{ event.start.local }}<br>
+                End: {{ event.end.local }}
+            </li>
+        {% else %}
+            <p>No events found for this venue.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

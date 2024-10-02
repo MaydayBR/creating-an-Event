@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+</head>
+<body>
+    <h1>Create a Female-Led Event</h1>
+    
+    <form action="/create_event" method="POST">
+        <label for="event_name">Event Name:</label>
+        <input type="text" id="event_name" name="event_name" placeholder="Enter event name" required><br>
+
+        <label for="event_description">Event Description:</label>
+        <textarea id="event_description" name="event_description" placeholder="Enter event description" required></textarea><br>
+
+        <label for="event_time">Event Time (HH:MM format):</label>
+        <input type="time" id="event_time" name="event_time" required><br>
+
+        <button type="submit">Create Event</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <br><br>
+    <h2>View Events at the Venue</h2>
+    <a href="/venue/YOUR_VENUE_ID/events">Click here to view all events at the venue</a>
+</body>
+</html>
