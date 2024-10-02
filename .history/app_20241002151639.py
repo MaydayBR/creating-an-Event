@@ -1,16 +1,12 @@
 from flask import Flask, render_template, request, redirect, flash
 import requests
 import json
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # Eventbrite API credentials
-EVENTBRITE_TOKEN = os.getenv('EVENTBRITE_TOKEN')
+EVENTBRITE_TOKEN = '2AMSUVKWV5T2GIUVMMJV'
 ORGANIZATION_ID = 'YOUR_ORGANIZATION_ID'
 
 # Route for the home page
